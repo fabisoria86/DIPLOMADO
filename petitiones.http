@@ -3,8 +3,8 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-  "username": "master",
-  "password": "master"
+  "username": "user2",
+  "password": "user2"
 }
 > {% client.global.set("auth_token", response.body.token); %}
 
@@ -19,22 +19,22 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "username": "master",
-  "password": "master"
+  "username": "user2",
+  "password": "user2"
 }
 
 ### GET findBy
-GET http://localhost:3000/api/users/7
+GET http://localhost:3000/api/users/2
 Authorization: Bearer {{auth_token}}
 
 ### UPDATE
-PUT http://localhost:3000/api/users/3
+PUT http://localhost:3000/api/users/1
 Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
   "username": "user2",
-  "password": "usermodificado"
+  "password": "user2"
 }
 
 ### PATCH
@@ -43,12 +43,9 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
+  "username": "user2",
   "status": "inactive"
 }
-
-### DELETE
-DELETE http://localhost:3000/api/users/3
-Authorization: Bearer {{auth_token}}
 
 ### GET findBy task
 GET http://localhost:3000/api/tasks
@@ -60,11 +57,11 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "name": "task34"
+  "name": "task22"
 }
 
 ### GET findBy task
-GET http://localhost:3000/api/tasks/1
+GET http://localhost:3000/api/tasks/8
 Authorization: Bearer {{auth_token}}
 
 ### UPDATE task
@@ -73,7 +70,9 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "name": "task8 modificada"
+  "name": "task22 modificada",
+  "user_id": 3,
+  "done": true
 }
 
 ### PATCH task
@@ -90,5 +89,5 @@ DELETE http://localhost:3000/api/tasks/1
 Authorization: Bearer {{auth_token}}
 
 ### GET findBy task and user
-GET http://localhost:3000/api/users/7/tasks
+GET http://localhost:3000/api/tasks/3/user
 Authorization: Bearer {{auth_token}}
